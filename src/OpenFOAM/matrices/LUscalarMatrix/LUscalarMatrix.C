@@ -217,9 +217,9 @@ void Foam::LUscalarMatrix::convert
     Field<scalar>& upperPtr = uBuffer.buffer(nFaces);
     Field<scalar>& lowerPtr = lBuffer.buffer(nFaces);
     
-    cudaMemcpyAsync(diagPtr.data(), diag.data(), diag.byteSize(), cudaMemcpyDeviceToHost, stream1());
-    cudaMemcpyAsync(upperPtr.data(), upper.data(), upper.byteSize(), cudaMemcpyDeviceToHost, stream2());
-    cudaMemcpyAsync(lowerPtr.data(), lower.data(), lower.byteSize(), cudaMemcpyDeviceToHost, stream2());
+    hipMemcpyAsync(diagPtr.data(), diag.data(), diag.byteSize(), hipMemcpyDeviceToHost, stream1());
+    hipMemcpyAsync(upperPtr.data(), upper.data(), upper.byteSize(), hipMemcpyDeviceToHost, stream2());
+    hipMemcpyAsync(lowerPtr.data(), lower.data(), lower.byteSize(), hipMemcpyDeviceToHost, stream2());
 
     stream1.synchronize();
     for (label cell=0; cell<nCells; cell++)

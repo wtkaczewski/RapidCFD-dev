@@ -3,7 +3,7 @@
 namespace Foam
 {
 
-#if __CUDA_ARCH__ >= 350
+#ifdef __HIP_ARCH_HAS_WARP_FUNNEL_SHIFT__
 
 template<class T>
 inline __device__ T textures<T>::operator[](const int& i) const
@@ -46,54 +46,54 @@ inline __device__ double textures<double>::operator[](const int& i) const
 template<class T>
 inline void textureBind<T>::bind(int n)
 {
-    cudaResourceDesc resDesc;
-    memset(&resDesc, 0, sizeof(cudaResourceDesc));
+    hipResourceDesc resDesc;
+    memset(&resDesc, 0, sizeof(hipResourceDesc));
 
-    resDesc.resType = cudaResourceTypeLinear;
+    resDesc.resType = hipResourceTypeLinear;
     resDesc.res.linear.devPtr = const_cast<T*>(data);
     resDesc.res.linear.sizeInBytes = n*sizeof(T);
 
     initResourceDesc(resDesc);
 
-    cudaTextureDesc texDesc;
-    memset(&texDesc, 0, sizeof(cudaTextureDesc));
-    texDesc.readMode = cudaReadModeElementType;
+    hipTextureDesc texDesc;
+    memset(&texDesc, 0, sizeof(hipTextureDesc));
+    texDesc.readMode = hipReadModeElementType;
 
-    cudaCreateTextureObject(&tex, &resDesc, &texDesc, NULL);
+    hipCreateTextureObject(&tex, &resDesc, &texDesc, NULL);
 }
 
 template<>
-inline void textureBind<int>::initResourceDesc(cudaResourceDesc& resDesc)
+inline void textureBind<int>::initResourceDesc(hipResourceDesc& resDesc)
 {
-    resDesc.res.linear.desc.f = cudaChannelFormatKindSigned;
+    resDesc.res.linear.desc.f = hipChannelFormatKindSigned;
     resDesc.res.linear.desc.x = 32;
 }
 
 template<>
-inline void textureBind<long>::initResourceDesc(cudaResourceDesc& resDesc)
+inline void textureBind<long>::initResourceDesc(hipResourceDesc& resDesc)
 {
-    resDesc.res.linear.desc.f = cudaChannelFormatKindSigned;
+    resDesc.res.linear.desc.f = hipChannelFormatKindSigned;
     resDesc.res.linear.desc.x = 32;
     resDesc.res.linear.desc.y = 32;
 }
 
 template<>
-inline void textureBind<float>::initResourceDesc(cudaResourceDesc& resDesc)
+inline void textureBind<float>::initResourceDesc(hipResourceDesc& resDesc)
 {
-    resDesc.res.linear.desc.f = cudaChannelFormatKindFloat;
+    resDesc.res.linear.desc.f = hipChannelFormatKindFloat;
     resDesc.res.linear.desc.x = 32;
 }
 
 template<>
-inline void textureBind<double>::initResourceDesc(cudaResourceDesc& resDesc)
+inline void textureBind<double>::initResourceDesc(hipResourceDesc& resDesc)
 {
-    resDesc.res.linear.desc.f = cudaChannelFormatKindSigned;
+    resDesc.res.linear.desc.f = hipChannelFormatKindSigned;
     resDesc.res.linear.desc.x = 32;
     resDesc.res.linear.desc.y = 32;
 }
 
 template<class T>
-inline void textureBind<T>::initResourceDesc(cudaResourceDesc& resDesc)
+inline void textureBind<T>::initResourceDesc(hipResourceDesc& resDesc)
 {
     static_assert(is_number<T>::value, "Only numbers can be used as texture resources");
 }

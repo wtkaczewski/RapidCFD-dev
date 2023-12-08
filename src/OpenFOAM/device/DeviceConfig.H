@@ -3,19 +3,27 @@
 #include <stdio.h>
 #include <type_traits>
 
-#define CUDA_CALL(x) do { if((x) != cudaSuccess) {         \
+//#ifdef _​_HIP_​PLATFORM_​AMD_​_
+#include <hip/hip_runtime.h>
+//#endif
+
+#ifdef __CUDACC__
+//#include <hip/hip_runtime.h>
+#endif
+
+#define GPU_API_CALL(x) do { if((x) != hipSuccess) {         \
  printf("Error at %s:%d\n",__FILE__,__LINE__);             \
- printf("%s\n",cudaGetErrorString(cudaPeekAtLastError())); \
- cudaDeviceReset();                                        \
- ::exit(static_cast<int>(cudaPeekAtLastError()));          \
+ printf("%s\n",hipGetErrorString(hipPeekAtLastError())); \
+ hipDeviceReset();                                        \
+ ::exit(static_cast<int>(hipPeekAtLastError()));          \
  }} while(0)
 
 #define GPU_ERROR_CHECK()                                  \
- cudaDeviceSynchronize();                                  \
- CUDA_CALL( cudaPeekAtLastError());
+ hipDeviceSynchronize();                                  \
+ GPU_API_CALL( hipPeekAtLastError());
 
 #define GPU_ERROR_CHECK_ASYNC()                            \
- CUDA_CALL(cudaPeekAtLastError());
+ GPU_API_CALL(hipPeekAtLastError());
 
 namespace Foam
 {

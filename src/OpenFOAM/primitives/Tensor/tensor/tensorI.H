@@ -88,7 +88,7 @@ inline Foam::vector Foam::eigenValues(const tensor& t)
                 i = w + P/w - aBy3;
             }
 
-            #ifdef __CUDA_ARCH__
+            #ifdef __HIPCC__
             return vector(-GPU_VGREAT, i, GPU_VGREAT);
             #else
             return vector(-VGREAT, i, VGREAT);

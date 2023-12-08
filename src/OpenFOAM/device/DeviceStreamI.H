@@ -2,22 +2,22 @@
 
 inline Foam::DeviceStream::DeviceStream()
 {
-    CUDA_CALL(cudaStreamCreate(&stream_));
+    GPU_API_CALL(hipStreamCreate(&stream_));
 }
 
 
 inline Foam::DeviceStream::~DeviceStream()
 {
-    CUDA_CALL(cudaStreamDestroy(stream_));
+    GPU_API_CALL(hipStreamDestroy(stream_));
 }
 
 
 inline void Foam::DeviceStream::synchronize() const
 {
-    CUDA_CALL(cudaStreamSynchronize(stream_));
+    GPU_API_CALL(hipStreamSynchronize(stream_));
 }
 
-inline cudaStream_t Foam::DeviceStream::operator()() const
+inline hipStream_t Foam::DeviceStream::operator()() const
 {
     return stream_;
 }

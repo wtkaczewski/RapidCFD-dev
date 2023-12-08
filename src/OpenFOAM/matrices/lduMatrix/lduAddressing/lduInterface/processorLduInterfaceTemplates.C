@@ -418,7 +418,7 @@ void Foam::processorLduInterface::compressedSend
              )
         );
 
-        CUDA_CALL(cudaMemcpy(fArray+nm1, f.data() + (f.size() - 1), sizeof(Type), cudaMemcpyDeviceToDevice));
+        GPU_API_CALL(hipMemcpy(fArray+nm1, f.data() + (f.size() - 1), sizeof(Type), hipMemcpyDeviceToDevice));
 
         if (commsType == Pstream::blocking || commsType == Pstream::scheduled)
         {

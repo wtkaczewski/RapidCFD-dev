@@ -5,14 +5,14 @@
 namespace Foam {
 
 class DeviceStream {
-    cudaStream_t  stream_;
+    hipStream_t  stream_;
 
 public:
     DeviceStream();
     ~DeviceStream();
 
     void synchronize() const;
-    cudaStream_t operator()() const;
+    hipStream_t operator()() const;
 };
 
 }

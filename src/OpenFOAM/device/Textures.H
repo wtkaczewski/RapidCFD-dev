@@ -12,10 +12,10 @@ class textureBind;
 template<class T>
 class textures
 {
-    cudaTextureObject_t tex;
+    hipTextureObject_t tex;
     const T* data;
 
-    textures(cudaTextureObject_t _tex, const T* _data):
+    textures(hipTextureObject_t _tex, const T* _data):
         tex(_tex), data(_data) {}
 
 public:
@@ -30,10 +30,10 @@ template<class T>
 class textureBind
 {
 private:
-    cudaTextureObject_t tex;
+    hipTextureObject_t tex;
     const T* data;
 
-    inline void initResourceDesc(cudaResourceDesc& resDesc);
+    inline void initResourceDesc(hipResourceDesc& resDesc);
     void bind(int n);
 
 public:
@@ -57,7 +57,7 @@ public:
     ~textureBind()
     {
         if(needTextureBind())
-            cudaDestroyTextureObject(tex);
+            hipDestroyTextureObject(tex);
     }
 
     textures<T> operator()() const

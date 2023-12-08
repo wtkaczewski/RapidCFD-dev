@@ -940,7 +940,7 @@ void Foam::argList::parse
         }
     }
 
-    cudaDeviceSetCacheConfig(cudaFuncCachePreferL1);
+    hipDeviceSetCacheConfig(hipFuncCachePreferL1);
 }
 
 

@@ -58,7 +58,7 @@ class labelBits
         __HOST____DEVICE__
         inline static label pack(const label val, const direction bits)
         {
-#if         defined(FULLDEBUG) && ! defined(__CUDACC__)
+#if         defined(FULLDEBUG) && ! defined(__HIPCC__)
             if (bits > 7 || (((val<<3)>>3) != val))
             {
                 FatalErrorIn

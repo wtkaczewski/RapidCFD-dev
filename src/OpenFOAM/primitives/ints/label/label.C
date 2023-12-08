@@ -93,7 +93,7 @@ label pow(label a, label b)
         ans *= a;
     }
 
-#if defined(FULLDEBUG) && !defined(__CUDA_ARCH__)
+#if defined(FULLDEBUG) && !defined(__HIPCC__)
     if (b < 0)
     {
         FatalErrorIn("pow(label a, label b)")

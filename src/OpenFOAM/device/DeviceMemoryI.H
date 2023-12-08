@@ -25,31 +25,31 @@ template<class T>
 inline T* Foam::allocPageLocked(const label size)
 {
     T* ptr;
-    CUDA_CALL(cudaMallocHost(&ptr, size*sizeof(T)));
+    GPU_API_CALL(hipHostMalloc(&ptr, size*sizeof(T)));
     return ptr;
 }
 
 template<class T>
 inline void Foam::freePageLocked(T* ptr)
 {
-    CUDA_CALL(cudaFreeHost(ptr));
+    GPU_API_CALL(hipHostFree(ptr));
 }
 
 
 inline void Foam::copyHostToDevice(void* dst, const void* src, const label size)
 {
-    CUDA_CALL(cudaMemcpy(dst, src, size, cudaMemcpyHostToDevice));
+    GPU_API_CALL(hipMemcpy(dst, src, size, hipMemcpyHostToDevice));
 }
 
 
 inline void Foam::copyDeviceToHost(void* dst, const void* src, const label size)
 {
-    CUDA_CALL(cudaMemcpy(dst, src, size, cudaMemcpyDeviceToHost));
+    GPU_API_CALL(hipMemcpy(dst, src, size, hipMemcpyDeviceToHost));
 }
 
 
 inline void Foam::copyDeviceToDevice(void* dst, const void* src, const label size)
 {
-    CUDA_CALL(cudaMemcpy(dst, src, size, cudaMemcpyDeviceToDevice));
+    GPU_API_CALL(hipMemcpy(dst, src, size, hipMemcpyDeviceToDevice));
 }
 

@@ -5,27 +5,31 @@ namespace Foam {
     int deviceCount()
     {
         int num_devices;
-        CUDA_CALL(cudaGetDeviceCount(&num_devices));
+        GPU_API_CALL(hipGetDeviceCount(&num_devices));
         return num_devices;
     }
 
     int currentDevice()
     {
         int device;
-        CUDA_CALL(cudaGetDevice(&device));
+        GPU_API_CALL(hipGetDevice(&device));
         return device;
     }
 
     void setCurrentDevice(int device)
     {
-        CUDA_CALL(cudaSetDevice(device));
+        GPU_API_CALL(hipSetDevice(device));
     }
 
     int deviceComputeCapability(int device)
     {
-        cudaDeviceProp deviceProp;
-        CUDA_CALL(cudaGetDeviceProperties(&deviceProp, device));
-        return 10*deviceProp.major + deviceProp.minor;
+        #ifdef __HIP_PLATFORM_NVIDIA__
+            cudaDeviceProp deviceProp;
+            GPU_API_CALL(cudaGetDeviceProperties(&deviceProp, device));
+            return 10*deviceProp.major + deviceProp.minor;
+       #else
+            return 0;
+       #endif
     }
 
     int currentComputeCapability()
@@ -35,8 +39,12 @@ namespace Foam {
 
     bool needTextureBind()
     {
-        static bool needBind = currentComputeCapability() < 35;
-        return needBind;
+        #ifdef __HIP_PLATFORM_NVIDIA__
+            static bool needBind = currentComputeCapability() < 35;
+            return needBind;
+       #else
+           return true;
+      #endif
     }
 
 }

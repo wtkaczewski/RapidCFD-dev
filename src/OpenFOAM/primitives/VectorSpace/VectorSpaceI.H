@@ -81,7 +81,7 @@ inline const Cmpt& VectorSpace<Form, Cmpt, nCmpt>::component
     const direction d
 ) const
 {
-#   if defined(FULLDEBUG) && ! defined(__CUDACC__)
+#   if defined(FULLDEBUG) && ! defined(__HIPCC__)
     if (d >= nCmpt)
     {
         FatalErrorIn
@@ -103,7 +103,7 @@ inline Cmpt& VectorSpace<Form, Cmpt, nCmpt>::component
     const direction d
 )
 {
-#   if defined(FULLDEBUG) && ! defined(__CUDACC__)
+#   if defined(FULLDEBUG) && ! defined(__HIPCC__)
     if (d >= nCmpt)
     {
         FatalErrorIn("VectorSpace<Form, Cmpt, nCmpt>::component(direction)")
@@ -124,7 +124,7 @@ inline void VectorSpace<Form, Cmpt, nCmpt>::component
     const direction d
 ) const
 {
-#   if defined(FULLDEBUG) && ! defined(__CUDACC__)
+#   if defined(FULLDEBUG) && ! defined(__HIPCC__)
     if (d >= nCmpt)
     {
         FatalErrorIn
@@ -147,7 +147,7 @@ inline void VectorSpace<Form, Cmpt, nCmpt>::replace
     const Cmpt& c
 )
 {
-#   if defined(FULLDEBUG) && ! defined(__CUDACC__)
+#   if defined(FULLDEBUG) && ! defined(__HIPCC__)
     if (d >= nCmpt)
     {
         FatalErrorIn
@@ -172,7 +172,7 @@ inline const Cmpt& VectorSpace<Form, Cmpt, nCmpt>::operator[]
     const direction d
 ) const
 {
-#   if defined(FULLDEBUG) && ! defined(__CUDACC__)
+#   if defined(FULLDEBUG) && ! defined(__HIPCC__)
     if (d >= nCmpt)
     {
         FatalErrorIn
@@ -194,7 +194,7 @@ inline Cmpt& VectorSpace<Form, Cmpt, nCmpt>::operator[]
     const direction d
 )
 {
-#   if defined(FULLDEBUG) && ! defined(__CUDACC__)
+#   if defined(FULLDEBUG) && ! defined(__HIPCC__)
     if (d >= nCmpt)
     {
         FatalErrorIn("VectorSpace<Form, Cmpt, nCmpt>::operator[](direction d)")
