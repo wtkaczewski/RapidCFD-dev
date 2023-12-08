@@ -109,7 +109,7 @@ inline Foam::scalar Foam::polynomialSolidTransport<Thermo, PolySize>::mu
     const scalar T
 ) const
 {
-    #ifndef __CUDACC__
+    #ifndef __HIPCC__
     notImplemented
     (
         "Foam::scalar Foam::polynomialSolidTransport<thermo, PolySize>mu::"

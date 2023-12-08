@@ -66,7 +66,7 @@ inline Foam::scalar Foam::species::thermo<Thermo, Type>::T
 
         if (iter++ > maxIter_)
         {
-            #ifndef __CUDACC__
+            #ifndef __HIPCC__
             FatalErrorIn
             (
                 "thermo<Thermo, Type>::T(scalar f, scalar T0, "

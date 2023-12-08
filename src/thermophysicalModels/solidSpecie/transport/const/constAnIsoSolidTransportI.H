@@ -86,7 +86,7 @@ __HOST____DEVICE__
 inline Foam::scalar Foam::constAnIsoSolidTransport<Thermo>::
 mu(const scalar p, const scalar T) const
 {
-    #ifndef __CUDACC__
+    #ifndef __HIPCC__
     notImplemented
     (
         "Foam::scalar Foam::constAnIsoSolidTransport<Thermo>mu::"

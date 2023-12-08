@@ -234,7 +234,7 @@ Foam::tmp<Foam::vectorField> Foam::localAxesRotation::transform
 __HOST____DEVICE__
 Foam::vector Foam::localAxesRotation::transform(const vector& v) const
 {
-    #ifndef __CUDACC__
+    #ifndef __HIPCC__
     notImplemented
     (
         "vector localAxesRotation::transform(const vector&) const"
@@ -269,7 +269,7 @@ Foam::tmp<Foam::vectorField> Foam::localAxesRotation::invTransform
 __HOST____DEVICE__
 Foam::vector Foam::localAxesRotation::invTransform(const vector& v) const
 {
-    #ifndef __CUDACC__
+    #ifndef __HIPCC__
     notImplemented
     (
         "vector localAxesRotation::invTransform(const vector&) const"
@@ -319,7 +319,7 @@ Foam::tensor Foam::localAxesRotation::transformTensor
     const tensor& t
 ) const
 {
-    #ifndef __CUDACC__
+    #ifndef __HIPCC__
     notImplemented
     (
         "tensor localAxesRotation::transformTensor(const tensor&) const"
@@ -466,7 +466,7 @@ Foam::symmTensor Foam::localAxesRotation::transformVector
     const vector& v
 ) const
 {
-    #ifndef __CUDACC__
+    #ifndef __HIPCC__
     notImplemented
     (
         "tensor localAxesRotation::transformVector(const vector&) const"

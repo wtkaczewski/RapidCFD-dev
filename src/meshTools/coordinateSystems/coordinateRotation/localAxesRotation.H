@@ -147,7 +147,7 @@ public:
         __HOST____DEVICE__
         virtual const tensor& R() const
         {
-            #ifndef __CUDACC__
+            #ifndef __HIPCC__
             notImplemented("const tensor& localAxesRotation::R() const");
             return tensor::zero;
             #else
@@ -160,7 +160,7 @@ public:
         __HOST____DEVICE__
         virtual const tensor& Rtr() const
         {
-             #ifndef __CUDACC__
+             #ifndef __HIPCC__
              notImplemented("const tensor& localAxesRotation::Rtr() const");
              return tensor::zero;
              #else
@@ -172,7 +172,7 @@ public:
         __HOST____DEVICE__
         virtual const vector e1() const
         {
-            #ifndef __CUDACC__
+            #ifndef __HIPCC__
             notImplemented("const tensor& localAxesRotation::e1() const");
             return vector::zero;
             #else
@@ -184,7 +184,7 @@ public:
         __HOST____DEVICE__
         virtual const vector e2() const
         {
-            #ifndef __CUDACC__
+            #ifndef __HIPCC__
             notImplemented("const tensor& localAxesRotation::e2() const");
             return vector::zero;
             #else

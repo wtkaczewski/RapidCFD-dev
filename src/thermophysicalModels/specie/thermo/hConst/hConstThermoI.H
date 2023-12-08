@@ -148,7 +148,7 @@ inline Foam::scalar Foam::hConstThermo<EquationOfState>::s
     const scalar p, const scalar T
 ) const
 {
-    #ifndef __CUDACC__
+    #ifndef __HIPCC__
     notImplemented
     (
         "scalar hConstThermo<EquationOfState>::"

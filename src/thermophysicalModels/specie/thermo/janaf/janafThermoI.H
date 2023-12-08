@@ -123,7 +123,7 @@ inline Foam::scalar Foam::janafThermo<EquationOfState>::limit
 {
     if (T < Tlow_ || T > Thigh_)
     {
-        #ifndef __CUDACC__
+        #ifndef __HIPCC__
         WarningIn
         (
             "janafThermo<EquationOfState>::limit(const scalar T) const"
