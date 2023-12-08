@@ -42,7 +42,7 @@ export WM_PROJECT_VERSION=dev
 #
 # Location of the OpenFOAM installation
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-foamInstall=$HOME/$WM_PROJECT
+foamInstall=$HOME/OpenFOAM
 # foamInstall=~/$WM_PROJECT
 # foamInstall=/opt/$WM_PROJECT
 # foamInstall=/usr/local/$WM_PROJECT
@@ -63,8 +63,11 @@ foamCompiler=system
 
 #- Compiler:
 #    WM_COMPILER = Nvcc | Clang
-export WM_COMPILER=Nvcc
+export WM_COMPILER=Clang
 unset WM_COMPILER_ARCH WM_COMPILER_LIB_ARCH
+#GPU arch used by CUDA or AMD compiler 
+#export WM_GPU_ARCH="sm_30" #cuda kepler arch
+export WM_GPU_ARCH="gfx900" #AMD VEGA
 
 #- Architecture:
 #    WM_ARCH_OPTION = 32 | 64

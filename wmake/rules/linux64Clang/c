@@ -2,7 +2,7 @@
 
 cWARN        = -Wall
 
-cc          = hipcc -m64
+cc          = hipcc -m64 --amdgpu-target=$(WM_GPU_ARCH)
 
 include $(RULES)/c$(WM_COMPILE_OPTION)
 
