@@ -254,8 +254,8 @@ OpenFOAM | ThirdParty)
         ;;
     Clang)
         # using clang - not gcc
-        export WM_CC='clang'
-        export WM_CXX='clang++'
+        export WM_CC='hipcc'
+        export WM_CXX='hipcc'
         clang_version=llvm-3.4.2
         ;;
     *)
@@ -332,8 +332,8 @@ OpenFOAM | ThirdParty)
 system)
     case "$WM_COMPILER" in
     Clang)
-        export WM_CC='clang'
-        export WM_CXX='clang++'
+        export WM_CC='hipcc'
+        export WM_CXX='hipcc'
         clang_version=llvm-9.0.0
 
         cudaHome="$(dirname $(dirname $(which nvcc)))"
