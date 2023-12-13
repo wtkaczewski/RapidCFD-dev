@@ -22,4 +22,5 @@ EXE_LIBS = \
     -lsampling \
     -lfvOptions \
     -ldynamicFvMesh \
-    -lmeshTools
+    -lmeshTools \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

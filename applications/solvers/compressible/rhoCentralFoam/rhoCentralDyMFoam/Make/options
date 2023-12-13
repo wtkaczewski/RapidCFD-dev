@@ -17,4 +17,5 @@ EXE_LIBS = \
     -lcompressibleRASModels \
     -lcompressibleLESModels \
     -ldynamicFvMesh \
-    -lmeshTools
+    -lmeshTools \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

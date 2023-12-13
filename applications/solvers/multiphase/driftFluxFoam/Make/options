@@ -22,4 +22,6 @@ EXE_LIBS = \
     -lfvOptions \
     -lincompressibleTransportModels \
     -lturbulenceModels \
-    -lcompressibleTurbulenceModels
+    -lcompressibleTurbulenceModels \
+    -ltwoPhaseMixture \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

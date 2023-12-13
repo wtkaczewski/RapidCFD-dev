@@ -17,5 +17,6 @@ EXE_LIBS = \
     -lspecie \
     -lcompressibleTurbulenceModel \
     -lcompressibleRASModels \
-    -lcompressibleLESModels
+    -lcompressibleLESModels \
+    -L$(FOAM_LIBBIN)/dummy -lPstream
 

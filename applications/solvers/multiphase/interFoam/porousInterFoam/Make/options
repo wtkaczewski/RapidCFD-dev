@@ -20,4 +20,9 @@ EXE_LIBS = \
     -lfiniteVolume \
     -lmeshTools \
     -lfvOptions \
-    -lsampling
+    -lsampling \
+    -L$(FOAM_LIBBIN)/dummy -lPstream \
+    -ltwoPhaseMixture \
+    -lincompressibleTransportModels \
+    -linterfaceProperties \
+    -ltwoPhaseProperties

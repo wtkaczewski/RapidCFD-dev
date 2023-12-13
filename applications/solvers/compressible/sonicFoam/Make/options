@@ -16,4 +16,5 @@ EXE_LIBS = \
     -lmeshTools \
     -lsampling \
     -lfvOptions \
-    -lfiniteVolume
+    -lfiniteVolume \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

@@ -10,4 +10,5 @@ EXE_LIBS = \
     -lincompressibleLESModels \
     -lincompressibleTransportModels \
     -lfiniteVolume \
-    -lmeshTools
+    -lmeshTools \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

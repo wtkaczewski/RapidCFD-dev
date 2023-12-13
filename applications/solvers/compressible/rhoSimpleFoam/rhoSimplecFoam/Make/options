@@ -13,7 +13,9 @@ EXE_LIBS = \
     -lfluidThermophysicalModels \
     -lspecie \
     -lcompressibleRASModels \
+    -lcompressibleTurbulenceModel \ 
     -lfiniteVolume \
     -lsampling \
     -lmeshTools \
-    -lfvOptions
+    -lfvOptions \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

@@ -19,4 +19,5 @@ EXE_LIBS = \
     -lradiationModels \
     -lcompressibleTurbulenceModel \
     -lcompressibleRASModels \
-    -lmeshTools
+    -lmeshTools \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

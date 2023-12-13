@@ -27,4 +27,5 @@ EXE_LIBS = \
     -lradiationModels \
     -lfvOptions \
     -lregionModels \
-    -lsampling
+    -lsampling \
+    -L$(FOAM_LIBBIN)/dummy -lPstream

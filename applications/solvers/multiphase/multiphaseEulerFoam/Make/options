@@ -19,4 +19,5 @@ EXE_LIBS = \
     -lcompressibleMultiphaseEulerianInterfacialModels \
     -lincompressibleLESModels \
     -lincompressibleRASModels \
-    -lfiniteVolume
+    -lfiniteVolume \
+    -L$(FOAM_LIBBIN)/dummy -lPstream
