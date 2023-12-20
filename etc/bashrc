@@ -42,7 +42,7 @@ export WM_PROJECT_VERSION=dev
 #
 # Location of the OpenFOAM installation
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-foamInstall=$HOME/OpenFOAM
+foamInstall=$HOME
 # foamInstall=~/$WM_PROJECT
 # foamInstall=/opt/$WM_PROJECT
 # foamInstall=/usr/local/$WM_PROJECT
@@ -83,7 +83,7 @@ export WM_COMPILE_OPTION=Opt
 
 #- CUDA aware MPI implementation:
 #    WM_MPLIB = OPENMPI | MVAPICH2
-export WM_MPLIB=OPENMPI
+export WM_MPLIB=SYSTEMOPENMPI
 
 #- Operating System:
 #    WM_OSTYPE = POSIX | ???
