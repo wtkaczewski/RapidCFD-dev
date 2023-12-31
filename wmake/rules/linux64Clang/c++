@@ -9,7 +9,7 @@ c++LESSWARN = \
 # Suppress CGAL warnings
 c++CGALWARN = -Wno-c++11-extensions -Wno-sometimes-uninitialized -Wno-mismatched-tags
 
-CC          = hipcc -std=c++11 -m64 -fPIC --amdgpu-target=$(WM_GPU_ARCH) 
+CC          = hipcc -std=c++14 -m64 -fPIC --offload-arch=$(WM_GPU_ARCH) 
 
 include $(RULES)/c++$(WM_COMPILE_OPTION)
 
